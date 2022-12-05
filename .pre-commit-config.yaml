@@ -1,0 +1,41 @@
+exclude: ".git|.tox"
+default_stages: [commit]
+fail_fast: true
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-merge-conflict
+
+  - repo: https://github.com/hadialqattan/pycln
+    rev: v1.2.4
+    hooks:
+      - id: pycln
+        args: [--config=pyproject.toml]
+
+  - repo: https://github.com/timothycrosley/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        args: [--settings-path=pyproject.toml]
+        types: [python]
+
+  - repo: https://github.com/psf/black
+    rev: 19.10b0
+    hooks:
+      - id: black
+        args: [--config=pyproject.toml]
+        types: [python]
+        additional_dependencies:
+          - "click<=8.0.2"
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+
+  - repo: https://github.com/python-poetry/poetry
+    rev: 6485bc23d6497c7731e0f1a635f960b33f2ae99e
+    hooks:
+      - id: poetry-check

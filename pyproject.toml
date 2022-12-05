@@ -1,0 +1,53 @@
+[tool.poetry]
+authors = ["Bryan Matteson <bryan@matteson.dev>"]
+description = ""
+name = "cbs3"
+packages = [{include = "cbs3", from = "src"}]
+readme = "README.md"
+repository = "https://github.com/bryanmatteson/cbs3"
+version = "0.0.1"
+
+[tool.poetry.dependencies]
+cbasyncio = "^0.0.1"
+httpx = "*"
+pydantic = "^1.9.1"
+python = "^3.8"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.isort]
+ensure_newline_before_comments = true
+force_grid_wrap = 0
+include_trailing_comma = true
+line_length = 120
+multi_line_output = 3
+use_parentheses = true
+
+[tool.pycln]
+all = true
+
+[tool.black]
+include = "\\.(py)$"
+line-length = 120
+target-version = ["py38"]
+
+[tool.mypy]
+disallow_untyped_defs = true
+ignore_missing_imports = true
+show_traceback = true
+
+[tool.pyright]
+exclude = ["**/__pycache__"]
+ignore = []
+include = ["src/cbs3"]
+stubPath = "./typings"
+typeCheckingMode = "basic"
+useLibraryCodeForTypes = true
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+pythonPlatform = "All"
+pythonVersion = "3.8"
